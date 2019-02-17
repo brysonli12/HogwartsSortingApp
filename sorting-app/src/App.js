@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Introduction from './questions/Introduction'
 
 class App extends Component {
   constructor(props) {
@@ -20,9 +21,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit
-          </p>
+          <Introduction/>
           <a
             className="App-link"
             href="https://reactjs.org"
