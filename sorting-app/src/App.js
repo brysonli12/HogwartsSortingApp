@@ -12,34 +12,33 @@ class App extends Component {
 
     this.state = {
       gryffindor: 0,
-    	ravenclaw: 0,
-    	slytherin: 0,
-    	hufflepull: 0,
-    	currentQuestion: 1,
+      ravenclaw: 0,
+      slytherin: 0,
+      hufflepull: 0,
+      currentQuestion: 1,
     }
     this.handleNext = this.handleNext.bind(this)
     this.addPointsToHouse = this.addPointsToHouse.bind(this)
   }
-  componentDidUpdate()
-  {
+  componentDidUpdate() {
     //console.log(this.state);
   }
   handleNext(e) {
     //console.log(this.state.currentQuestion);
-    this.setState({currentQuestion: (this.state.currentQuestion + 1) % 4 })
+    this.setState({ currentQuestion: (this.state.currentQuestion + 1) % 4 })
   }
 
   renderQuestion() {
     switch (this.state.currentQuestion) {
       case 0:
-        return <Introduction/>
+        return <Introduction />
       case 1:
-        return <Question addPts={this.addPointsToHouse} question="Which cat is best?"/>
+        return <Question addPts={this.addPointsToHouse} question="Which cat is best?" />
       case 2:
         return <RevealHouse sly={this.state.slytherin} rav={this.state.ravenclaw}
-                            huf={this.state.hufflepull} gry={this.state.gryffindor}/>
+          huf={this.state.hufflepull} gry={this.state.gryffindor} />
       default:
-      return "test"
+        return "test"
 
     }
   }
@@ -49,16 +48,16 @@ class App extends Component {
     //console.log("testing add points to house" + houseNum + " " + pointsToAdd)
     switch (houseNum) {
       case 0:
-        this.setState({gryffindor: this.state.gryffindor + pointsToAdd})
+        this.setState({ gryffindor: this.state.gryffindor + pointsToAdd })
         break;
       case 1:
-        this.setState({ravenclaw: this.state.ravenclaw + pointsToAdd})
+        this.setState({ ravenclaw: this.state.ravenclaw + pointsToAdd })
         break;
       case 2:
-        this.setState({slytherin: this.state.slytherin + pointsToAdd})
+        this.setState({ slytherin: this.state.slytherin + pointsToAdd })
         break;
       default:
-        this.setState({hufflepull: this.state.hufflepull + pointsToAdd})
+        this.setState({ hufflepull: this.state.hufflepull + pointsToAdd })
     }
     // possible that we automatically advance the question
     // then we don't need the button and don't have to check whether
@@ -70,14 +69,6 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           {this.renderQuestion()}
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
           <Button onClick={this.handleNext}>Next</Button>
         </header>
       </div>
