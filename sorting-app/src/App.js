@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Introduction from './questions/Introduction'
 import Question from './questions/QuestionForm'
+import RevealHouse from './questions/RevealHouse'
 import { Button } from 'semantic-ui-react'; // Icon
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
   }
   handleNext(e) {
     //console.log(this.state.currentQuestion);
-    this.setState({currentQuestion: (this.state.currentQuestion + 1) % 3 })
+    this.setState({currentQuestion: (this.state.currentQuestion + 1) % 4 })
   }
 
   renderQuestion() {
@@ -34,6 +35,9 @@ class App extends Component {
         return <Introduction/>
       case 1:
         return <Question addPts={this.addPointsToHouse} question="Which cat is best?"/>
+      case 2:
+        return <RevealHouse sly={this.state.slytherin} rav={this.state.ravenclaw}
+                            huf={this.state.hufflepull} gry={this.state.gryffindor}/>
       default:
       return "test"
 
