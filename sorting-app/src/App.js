@@ -38,6 +38,18 @@ class App extends Component {
 
     }
   }
+  addPointsToHouse(houseNum, pointsToAdd) {
+    switch (houseNum) {
+      case 0:
+        this.setState({gryffindor: this.state.gryffindor + 1})
+      case 1:
+        this.setState({ravenclaw: this.state.ravenclaw + 1})
+      case 2:
+        this.setState({slytherin: this.state.slytherin + 1})
+      default:
+        this.setState({hufflepull: this.state.hufflepull + 1})
+    }
+  }
   render() {
     return (
       <div className="App">
