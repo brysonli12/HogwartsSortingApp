@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Introduction from './questions/Introduction'
 import Question from './questions/QuestionForm'
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react'; // Icon
 
 class App extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class App extends Component {
     	currentQuestion: 1,
     }
     this.handleNext = this.handleNext.bind(this)
+    this.addPointsToHouse = this.addPointsToHouse.bind(this)
   }
   componentDidUpdate()
   {
@@ -32,23 +33,32 @@ class App extends Component {
       case 0:
         return <Introduction/>
       case 1:
-        return <Question question="Which cat is best?"/>
+        return <Question addPts={this.addPointsToHouse} question="Which cat is best?"/>
       default:
       return "test"
 
     }
   }
+
   addPointsToHouse(houseNum, pointsToAdd) {
+    //console.log('state' + this.state + this.state.ravenclaw)
+    //console.log("testing add points to house" + houseNum + " " + pointsToAdd)
     switch (houseNum) {
       case 0:
-        this.setState({gryffindor: this.state.gryffindor + 1})
+        this.setState({gryffindor: this.state.gryffindor + pointsToAdd})
+        break;
       case 1:
-        this.setState({ravenclaw: this.state.ravenclaw + 1})
+        this.setState({ravenclaw: this.state.ravenclaw + pointsToAdd})
+        break;
       case 2:
-        this.setState({slytherin: this.state.slytherin + 1})
+        this.setState({slytherin: this.state.slytherin + pointsToAdd})
+        break;
       default:
-        this.setState({hufflepull: this.state.hufflepull + 1})
+        this.setState({hufflepull: this.state.hufflepull + pointsToAdd})
     }
+    // possible that we automatically advance the question
+    // then we don't need the button and don't have to check whether
+    // or not the user made a choice (a choice --> advance [no redos])
   }
   render() {
     return (

@@ -16,7 +16,7 @@ componentDidUpdate()
   console.log(this.state);
 }
   handleChange(e) {
-
+    this.props.addPts(1, 4)
     this.setState({selectedAnswer: e.target.value })
   }
 
