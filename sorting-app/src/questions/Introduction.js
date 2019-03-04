@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Introduction = () => {
-  return <div>hello welcome to sorting app. Hello Bryson.</div>;
+  return <div>Hello, welcome to the sorting app.</div>;
 };
 
 export default Introduction;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Radio } from 'semantic-ui-react';
+// import { Form, Radio } from 'semantic-ui-react';
 
 class RevealHouse extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class RevealHouse extends Component {
   }
   handleChange(e) {
   }
-
+  
   render() {
     const { sly, rav, huf, gry } = this.props;
 

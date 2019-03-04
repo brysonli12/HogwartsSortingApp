@@ -15,7 +15,8 @@ class App extends Component {
       ravenclaw: 0,
       slytherin: 0,
       hufflepull: 0,
-      currentQuestion: 1,
+      currentQuestion: 0,
+      nextDisabled: false,
     }
     this.handleNext = this.handleNext.bind(this)
     this.addPointsToHouse = this.addPointsToHouse.bind(this)
@@ -25,7 +26,7 @@ class App extends Component {
   }
   handleNext(e) {
     //console.log(this.state.currentQuestion);
-    this.setState({ currentQuestion: (this.state.currentQuestion + 1) % 4 })
+    this.setState({ currentQuestion: (this.state.currentQuestion + 1) % 5 })
   }
 
   renderQuestion() {
@@ -33,8 +34,14 @@ class App extends Component {
       case 0:
         return <Introduction />
       case 1:
-        return <Question addPts={this.addPointsToHouse} question="Which cat is best?" />
-      case 2:
+        return <Question addPts={this.addPointsToHouse} question="Which cat is best?"
+          sly="Slytherin cat" rav="Ravenclaw cat"
+          huf="Huffpull cat" gry="Gryffindor cat" />
+          case 2:
+            return <Question addPts={this.addPointsToHouse} question="Which cat is best?"
+              sly="Slytherin cat" rav="Ravenclaw cat"
+              huf="Huffpull cat" gry="Gryffindor cat" />
+      case 3:
         return <RevealHouse sly={this.state.slytherin} rav={this.state.ravenclaw}
           huf={this.state.hufflepull} gry={this.state.gryffindor} />
       default:
@@ -47,13 +54,13 @@ class App extends Component {
     //console.log('state' + this.state + this.state.ravenclaw)
     //console.log("testing add points to house" + houseNum + " " + pointsToAdd)
     switch (houseNum) {
-      case 0:
+      case 0: case '0':
         this.setState({ gryffindor: this.state.gryffindor + pointsToAdd })
         break;
-      case 1:
+      case 1: case '1':
         this.setState({ ravenclaw: this.state.ravenclaw + pointsToAdd })
         break;
-      case 2:
+      case 2: case '2':
         this.setState({ slytherin: this.state.slytherin + pointsToAdd })
         break;
       default:
@@ -64,12 +71,17 @@ class App extends Component {
     // or not the user made a choice (a choice --> advance [no redos])
   }
   render() {
+    let nextButton;
+    if (this.state.nextDisabled)
+      nextButton = <Button disabled>Next</Button>
+    else
+      nextButton = <Button onClick={this.handleNext}>Next</Button>
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           {this.renderQuestion()}
-          <Button onClick={this.handleNext}>Next</Button>
+          {nextButton}
         </header>
       </div>
     );
