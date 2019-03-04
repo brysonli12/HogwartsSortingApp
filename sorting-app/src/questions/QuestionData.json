@@ -1,0 +1,18 @@
+{
+  "1": {
+    "question": "What is your favorite cat?",
+    "huf": "huffpull cat",
+    "sly": "slytherin cat",
+    "rav": "rav cat",
+    "gry": "gry cat",
+    "order": [0,1,2,3]
+  },
+  "2": {
+    "question": "What is your favorite color?",
+    "huf": "blue",
+    "sly": "green",
+    "rav": "black",
+    "gry": "yes",
+    "order": [1,0,3,2]
+  }
+}

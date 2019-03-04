@@ -20,14 +20,13 @@ class QuestionForm extends Component {
   }
 
   render() {
-    const { question_text } = this.props;
-    const { sly, rav, huf, gry, orders } = this.props;
-    let order = JSON.parse(orders)
+    let question, sly, rav, huf, gry, order;
+    ( { question, sly, rav, huf, gry, order }  = this.props.question );
     let questions = [['0', gry],['1', rav],['2', sly],['3', huf]]
     return (
       <div>
         <Header>
-          Question: {question_text}
+          Question: {question}
         </Header>
 
         <Form>
