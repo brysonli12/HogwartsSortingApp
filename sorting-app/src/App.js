@@ -33,7 +33,7 @@ class App extends Component {
 
   renderQuestion() {
     let qnum = this.state.currentQuestion
-    console.log(QuestionData[qnum])
+    // console.log(QuestionData[qnum])
     if (this.state.currentQuestion === 0) {
       return <Introduction />
     } else if (this.state.currentQuestion < QuestionData["count"] + 1) {
