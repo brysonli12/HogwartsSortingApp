@@ -7,7 +7,6 @@ class QuestionForm extends Component {
 
     this.state = {
       selectedAnswer: 0,
-      shuffled: false
     }
 
     this.handleChange = this.handleChange.bind(this)
