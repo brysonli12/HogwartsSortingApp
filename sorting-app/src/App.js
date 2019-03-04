@@ -36,11 +36,11 @@ class App extends Component {
       case 1:
         return <Question addPts={this.addPointsToHouse} question="Which cat is best?"
           sly="Slytherin cat" rav="Ravenclaw cat"
-          huf="Huffpull cat" gry="Gryffindor cat" />
-          case 2:
-            return <Question addPts={this.addPointsToHouse} question="Which cat is best?"
-              sly="Slytherin cat" rav="Ravenclaw cat"
-              huf="Huffpull cat" gry="Gryffindor cat" />
+          huf="Huffpull cat" gry="Gryffindor cat" orders="[0,1,2,3]"/>
+      case 2:
+        return <Question addPts={this.addPointsToHouse} question="Which cat is best?2"
+          sly="Slytherin cat" rav="Ravenclaw cat"
+          huf="Huffpull cat" gry="Gryffindor cat" orders="[1,2,0,3]"/>
       case 3:
         return <RevealHouse sly={this.state.slytherin} rav={this.state.ravenclaw}
           huf={this.state.hufflepull} gry={this.state.gryffindor} />
