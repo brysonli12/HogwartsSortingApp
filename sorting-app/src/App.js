@@ -18,7 +18,7 @@ class App extends Component {
       hufflepull: 0,
       currentQuestion: 0,
       nextDisabled: false,
-      totalNum: QuestionData["count"],
+      totalNumberOfQuestions: Object.keys(QuestionData).length,
     }
     this.handleNext = this.handleNext.bind(this)
     this.addPointsToHouse = this.addPointsToHouse.bind(this)
@@ -28,22 +28,17 @@ class App extends Component {
   }
   handleNext(e) {
     //console.log(this.state.currentQuestion);
-    this.setState({ currentQuestion: (this.state.currentQuestion + 1) % (QuestionData["count"]+2) })
+    this.setState({ currentQuestion: (this.state.currentQuestion + 1) % (this.state.totalNumberOfQuestions+2) })
   }
 
   renderQuestion() {
-    let qnum = this.state.currentQuestion
+    let questionNumber = this.state.currentQuestion
     // console.log(QuestionData[qnum])
     if (this.state.currentQuestion === 0) {
       return <Introduction />
-    } else if (this.state.currentQuestion < QuestionData["count"] + 1) {
+    } else if (this.state.currentQuestion < this.state.totalNumberOfQuestions + 1) {
       return <Question addPts={this.addPointsToHouse}
-        question={QuestionData[qnum]["question"]}
-        sly={QuestionData[qnum]["sly"]}
-        rav={QuestionData[qnum]["rav"]}
-        huf={QuestionData[qnum]["huf"]}
-        gry={QuestionData[qnum]["gry"]}
-        order={QuestionData[qnum]["order"]} />
+        question={QuestionData[questionNumber]} />
     } else {
         return <RevealHouse sly={this.state.slytherin} rav={this.state.ravenclaw}
           huf={this.state.hufflepull} gry={this.state.gryffindor} />

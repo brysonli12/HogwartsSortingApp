@@ -20,8 +20,8 @@ class QuestionForm extends Component {
   }
 
   render() {
-    const { question } = this.props;
-    const { sly, rav, huf, gry, order } = this.props;
+    let question, sly, rav, huf, gry, order;
+    ( { question, sly, rav, huf, gry, order }  = this.props.question );
     let questions = [['0', gry],['1', rav],['2', sly],['3', huf]]
     return (
       <div>
