@@ -4,6 +4,7 @@ import './App.css';
 import Introduction from './questions/Introduction'
 import Question from './questions/QuestionForm'
 import RevealHouse from './questions/RevealHouse'
+import QuestionData from './questions/QuestionData'
 import { Button } from 'semantic-ui-react'; // Icon
 
 class App extends Component {
@@ -17,42 +18,39 @@ class App extends Component {
       hufflepull: 0,
       currentQuestion: 0,
       nextDisabled: false,
+      totalNum: QuestionData["count"],
     }
     this.handleNext = this.handleNext.bind(this)
     this.addPointsToHouse = this.addPointsToHouse.bind(this)
   }
   componentDidUpdate() {
-    //console.log(this.state);
+    // console.log(this.state);
   }
   handleNext(e) {
     //console.log(this.state.currentQuestion);
-    this.setState({ currentQuestion: (this.state.currentQuestion + 1) % 5 })
+    this.setState({ currentQuestion: (this.state.currentQuestion + 1) % (QuestionData["count"]+2) })
   }
 
   renderQuestion() {
-    switch (this.state.currentQuestion) {
-      case 0:
-        return <Introduction />
-      case 1:
-        return <Question addPts={this.addPointsToHouse} question="Which cat is best?"
-          sly="Slytherin cat" rav="Ravenclaw cat"
-          huf="Huffpull cat" gry="Gryffindor cat" orders="[0,1,2,3]"/>
-      case 2:
-        return <Question addPts={this.addPointsToHouse} question="Which cat is best?2"
-          sly="Slytherin cat" rav="Ravenclaw cat"
-          huf="Huffpull cat" gry="Gryffindor cat" orders="[1,2,0,3]"/>
-      case 3:
+    let qnum = this.state.currentQuestion
+    console.log(QuestionData[qnum])
+    if (this.state.currentQuestion === 0) {
+      return <Introduction />
+    } else if (this.state.currentQuestion < QuestionData["count"] + 1) {
+      return <Question addPts={this.addPointsToHouse}
+        question={QuestionData[qnum]["question"]}
+        sly={QuestionData[qnum]["sly"]}
+        rav={QuestionData[qnum]["rav"]}
+        huf={QuestionData[qnum]["huf"]}
+        gry={QuestionData[qnum]["gry"]}
+        order={QuestionData[qnum]["order"]} />
+    } else {
         return <RevealHouse sly={this.state.slytherin} rav={this.state.ravenclaw}
           huf={this.state.hufflepull} gry={this.state.gryffindor} />
-      default:
-        return "test"
-
     }
   }
 
   addPointsToHouse(houseNum, pointsToAdd) {
-    //console.log('state' + this.state + this.state.ravenclaw)
-    //console.log("testing add points to house" + houseNum + " " + pointsToAdd)
     switch (houseNum) {
       case 0: case '0':
         this.setState({ gryffindor: this.state.gryffindor + pointsToAdd })
