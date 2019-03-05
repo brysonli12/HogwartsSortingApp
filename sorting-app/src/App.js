@@ -12,10 +12,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      gryffindor: 0,
-      ravenclaw: 0,
-      slytherin: 0,
-      hufflepull: 0,
+      houseScores: {
+        gryffindor: 0,
+        ravenclaw: 0,
+        slytherin: 0,
+        hufflepull: 0,
+      },
       currentQuestion: 0,
       nextDisabled: false,
       totalNumberOfQuestions: Object.keys(QuestionData).length,
@@ -28,36 +30,37 @@ class App extends Component {
   }
   handleNext(e) {
     //console.log(this.state.currentQuestion);
-    this.setState({ currentQuestion: (this.state.currentQuestion + 1) % (this.state.totalNumberOfQuestions+2) })
+    this.setState({ currentQuestion: (this.state.currentQuestion + 1) % (this.state.totalNumberOfQuestions + 2) })
   }
 
   renderQuestion() {
-    let questionNumber = this.state.currentQuestion
-    // console.log(QuestionData[qnum])
+    const questionNumber = this.state.currentQuestion;
+    const { houseScores } = this.state;
+
     if (this.state.currentQuestion === 0) {
       return <Introduction />
     } else if (this.state.currentQuestion < this.state.totalNumberOfQuestions + 1) {
       return <Question addPts={this.addPointsToHouse}
         question={QuestionData[questionNumber]} />
     } else {
-        return <RevealHouse sly={this.state.slytherin} rav={this.state.ravenclaw}
-          huf={this.state.hufflepull} gry={this.state.gryffindor} />
+      return <RevealHouse houseScores={houseScores} />
     }
   }
 
   addPointsToHouse(houseNum, pointsToAdd) {
+    const { houseScores: { gry, rav, sly, huf } } = this.state;
     switch (houseNum) {
       case '0':
-        this.setState({ gryffindor: this.state.gryffindor + pointsToAdd })
+        this.setState({ houseScores: { gryffindor: gry + pointsToAdd } })
         break;
       case '1':
-        this.setState({ ravenclaw: this.state.ravenclaw + pointsToAdd })
+        this.setState({ houseScores: { ravenclaw: rav + pointsToAdd } })
         break;
       case '2':
-        this.setState({ slytherin: this.state.slytherin + pointsToAdd })
+        this.setState({ houseScores: { slytherin: sly + pointsToAdd } })
         break;
       default:
-        this.setState({ hufflepull: this.state.hufflepull + pointsToAdd })
+        this.setState({ houseScores: { hufflepull: huf + pointsToAdd } })
     }
     // possible that we automatically advance the question
     // then we don't need the button and don't have to check whether

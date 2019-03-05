@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 // import { Form, Radio } from 'semantic-ui-react';
 
 class RevealHouse extends Component {
@@ -7,19 +8,20 @@ class RevealHouse extends Component {
 
     this.handleChange = this.handleChange.bind(this)
   }
-  componentDidUpdate()
-  {
-    console.log('revealhouse' + this.state);
+  componentDidMount() {
+    console.log('revealhouse' + this.props.houseScores);
   }
   handleChange(e) {
   }
-  
-  render() {
-    const { sly, rav, huf, gry } = this.props;
 
-    return(
+  render() {
+    const { houseScores } = this.props;
+    const maxKey = _.max(Object.keys(houseScores), house => houseScores[house]);
+    console.log(houseScores)
+    console.log(maxKey)
+    return (
       <div>Final Scores reveal that you are in the house...:
-        {sly}|{rav}|{huf}|{gry}
+        {maxKey}
       </div>
     )
   }
