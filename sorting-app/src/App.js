@@ -38,6 +38,13 @@ class App extends Component {
     const { houseScores } = this.state;
 
     if (this.state.currentQuestion === 0) {
+      // reset scores
+      this.setState({houseScores: {
+        gryffindor: 0,
+        ravenclaw: 0,
+        slytherin: 0,
+        hufflepull: 0,
+      }});
       return <Introduction />
     } else if (this.state.currentQuestion < this.state.totalNumberOfQuestions + 1) {
       // changing "key" prop causes react to unmount + mount with  new key
