@@ -8,20 +8,16 @@ class RevealHouse extends Component {
 
     this.handleChange = this.handleChange.bind(this)
   }
-  componentDidMount() {
-    console.log('revealhouse' + this.props.houseScores);
-  }
+
   handleChange(e) {
   }
 
   render() {
     const { houseScores } = this.props;
-    const maxKey = _.max(Object.keys(houseScores), house => houseScores[house]);
-    console.log(houseScores)
-    console.log(maxKey)
+    const sortedHouse = _.max(Object.keys(houseScores), house => houseScores[house]);
     return (
       <div>Final Scores reveal that you are in the house...:
-        {maxKey}
+        {sortedHouse}
       </div>
     )
   }
