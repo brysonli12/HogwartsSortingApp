@@ -40,7 +40,10 @@ class App extends Component {
     if (this.state.currentQuestion === 0) {
       return <Introduction />
     } else if (this.state.currentQuestion < this.state.totalNumberOfQuestions + 1) {
-      return <Question addPts={this.addPointsToHouse}
+      // changing "key" prop causes react to unmount + mount with  new key
+      // needed to reset selected question number
+      // https://stackoverflow.com/questions/39556753/how-to-reset-child-elements-setState
+      return <Question addPts={this.addPointsToHouse} key={questionNumber}
         question={QuestionData[questionNumber]} />
     } else {
       return <RevealHouse houseScores={houseScores} />
