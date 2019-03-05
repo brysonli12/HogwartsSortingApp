@@ -1,18 +1,26 @@
 {
   "1": {
-    "question": "What is your favorite cat?",
-    "huf": "huffpull cat",
-    "sly": "slytherin cat",
-    "rav": "rav cat",
-    "gry": "gry cat",
+    "question": "What is your favorite animal?",
+    "huf": "badger",
+    "sly": "serpent",
+    "rav": "eagle",
+    "gry": "lion",
     "order": [0,1,2,3]
   },
   "2": {
     "question": "What is your favorite color?",
-    "huf": "blue",
+    "huf": "black",
     "sly": "green",
-    "rav": "black",
-    "gry": "yes",
+    "rav": "bronze",
+    "gry": "gold",
     "order": [1,0,3,2]
+  },
+  "3": {
+    "question": "Which attribute best describes yourself?",
+    "huf": "hard working",
+    "sly": "resourceful",
+    "rav": "intelligent",
+    "gry": "brave",
+    "order": [2,3,1,0]
   }
 }
