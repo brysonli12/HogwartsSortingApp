@@ -47,13 +47,13 @@ class App extends Component {
 
   addPointsToHouse(houseNum, pointsToAdd) {
     switch (houseNum) {
-      case 0: case '0':
+      case '0':
         this.setState({ gryffindor: this.state.gryffindor + pointsToAdd })
         break;
-      case 1: case '1':
+      case '1':
         this.setState({ ravenclaw: this.state.ravenclaw + pointsToAdd })
         break;
-      case 2: case '2':
+      case '2':
         this.setState({ slytherin: this.state.slytherin + pointsToAdd })
         break;
       default:
