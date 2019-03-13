@@ -27,7 +27,7 @@ class App extends Component {
     this.addPointsToHouse = this.addPointsToHouse.bind(this)
   }
   componentDidUpdate() {
-    // console.log(this.state);
+    console.log(this.state.houseScores);
   }
 
   handleNextStart(e) {
@@ -60,24 +60,26 @@ class App extends Component {
   }
 
   addPointsToHouse(houseNum, pointsToAdd) {
-    const { houseScores: { gry, rav, sly, huf } } = this.state;
+    const { houseScores: { gryffindor: gry, ravenclaw: rav, slytherin: sly, hufflepull: huf } } = this.state;
     switch (houseNum) {
       case '0':
-        this.setState({ houseScores: { gryffindor: gry + pointsToAdd } })
+        this.setState({ houseScores: { gryffindor: gry + pointsToAdd,
+        ravenclaw: rav, slytherin: sly, hufflepull: huf } })
         break;
       case '1':
-        this.setState({ houseScores: { ravenclaw: rav + pointsToAdd } })
+        this.setState({ houseScores: { ravenclaw: rav + pointsToAdd,
+         gryffindor: gry, slytherin: sly, hufflepull: huf } })
         break;
       case '2':
-        this.setState({ houseScores: { slytherin: sly + pointsToAdd } })
+        this.setState({ houseScores: { slytherin: sly + pointsToAdd,
+        gryffindor: gry, ravenclaw: rav, hufflepull: huf } })
         break;
       default:
-        this.setState({ houseScores: { hufflepull: huf + pointsToAdd } })
+        this.setState({ houseScores: { hufflepull: huf + pointsToAdd,
+        gryffindor: gry, ravenclaw: rav, slytherin: sly } })
     }
-    // possible that we automatically advance the question
-    // then we don't need the button and don't have to check whether
-    // or not the user made a choice (a choice --> advance [no redos])
   }
+
   render() {
     let nextButton;
     if (this.state.nextDisabled)
