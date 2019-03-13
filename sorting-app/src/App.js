@@ -23,14 +23,14 @@ class App extends Component {
       totalNumberOfQuestions: Object.keys(QuestionData).length,
     }
     this.handleNext = this.handleNext.bind(this)
-    this.handleNext1 = this.handleNext1.bind(this)
+    this.handleNextStart = this.handleNextStart.bind(this)
     this.addPointsToHouse = this.addPointsToHouse.bind(this)
   }
   componentDidUpdate() {
     // console.log(this.state);
   }
 
-  handleNext1(e) {
+  handleNextStart(e) {
     // hide the introduction Next button and reset scores
     this.setState({ houseScores: {
       gryffindor: 0,
@@ -83,7 +83,7 @@ class App extends Component {
     if (this.state.nextDisabled)
       nextButton = <div></div> //<Button disabled>Next</Button>
     else
-      nextButton = <Button onClick={this.handleNext1}>Next</Button>
+      nextButton = <Button onClick={this.handleNextStart}>Next</Button>
     return (
       <div className="App">
         <header className="App-header">
