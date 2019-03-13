@@ -52,39 +52,46 @@ class App extends Component {
     if (this.state.currentQuestion === 0) {
       return <Introduction />
     } else if (this.state.currentQuestion < this.state.totalNumberOfQuestions + 1) {
+<<<<<<< HEAD
         question={QuestionData[questionNumber]} />
 =======
       return <Question addPts={this.addPointsToHouse}
+=======
+      return <Question addPts={this.addPointsToHouse}
+        question={QuestionData[questionNumber]} handleNext={this.handleNext} />
+>>>>>>> 17f15008bc3438cafd2e1d97d7a2382b1d53419d
     } else {
       return <RevealHouse houseScores={houseScores} />
     }
   }
 
   addPointsToHouse(houseNum, pointsToAdd) {
-    const { houseScores: { gry, rav, sly, huf } } = this.state;
+    const { houseScores: { gryffindor: gry, ravenclaw: rav, slytherin: sly, hufflepull: huf } } = this.state;
     switch (houseNum) {
       case '0':
-        this.setState({ houseScores: { gryffindor: gry + pointsToAdd } })
+        this.setState({ houseScores: { gryffindor: gry + pointsToAdd,
+        ravenclaw: rav, slytherin: sly, hufflepull: huf } })
         break;
       case '1':
-        this.setState({ houseScores: { ravenclaw: rav + pointsToAdd } })
+        this.setState({ houseScores: { ravenclaw: rav + pointsToAdd,
+         gryffindor: gry, slytherin: sly, hufflepull: huf } })
         break;
       case '2':
-        this.setState({ houseScores: { slytherin: sly + pointsToAdd } })
+        this.setState({ houseScores: { slytherin: sly + pointsToAdd,
+        gryffindor: gry, ravenclaw: rav, hufflepull: huf } })
         break;
       default:
-        this.setState({ houseScores: { hufflepull: huf + pointsToAdd } })
+        this.setState({ houseScores: { hufflepull: huf + pointsToAdd,
+        gryffindor: gry, ravenclaw: rav, slytherin: sly } })
     }
-    // possible that we automatically advance the question
-    // then we don't need the button and don't have to check whether
-    // or not the user made a choice (a choice --> advance [no redos])
   }
+
   render() {
     let nextButton;
     if (this.state.nextDisabled)
-      nextButton = <Button disabled>Next</Button>
+      nextButton = <div></div> //<Button disabled>Next</Button>
     else
-      nextButton = <Button onClick={this.handleNext}>Next</Button>
+      nextButton = <Button onClick={this.handleNextStart}>Next</Button>
     return (
       <div className="App">
         <header className="App-header">
