@@ -16,10 +16,11 @@ class QuestionForm extends Component {
     console.log(this.state);
   }
   handleChange(e, { value }) {
-    this.props.addPts(value, 4)
+
     this.setState({ selectedAnswer: value })
   }
   handleNextQuestion() {
+    this.props.addPts(this.state.selectedAnswer, 4);
     this.setState( {selectedAnswer: 0} );
     this.props.handleNext();
   }
