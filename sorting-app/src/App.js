@@ -23,13 +23,25 @@ class App extends Component {
       totalNumberOfQuestions: Object.keys(QuestionData).length,
     }
     this.handleNext = this.handleNext.bind(this)
+    this.handleNext1 = this.handleNext1.bind(this)
     this.addPointsToHouse = this.addPointsToHouse.bind(this)
   }
   componentDidUpdate() {
     // console.log(this.state);
   }
+
+  handleNext1(e) {
+    // hide the introduction Next button and reset scores
+    this.setState({ houseScores: {
+      gryffindor: 0,
+      ravenclaw: 0,
+      slytherin: 0,
+      hufflepull: 0,
+    }, nextDisabled: true, currentQuestion: (this.state.currentQuestion + 1) % (this.state.totalNumberOfQuestions + 2) })
+  }
+
   handleNext(e) {
-    //console.log(this.state.currentQuestion);
+    // to be used only by QuestionForm to go to next question
     this.setState({ currentQuestion: (this.state.currentQuestion + 1) % (this.state.totalNumberOfQuestions + 2) })
   }
 
@@ -44,7 +56,7 @@ class App extends Component {
       // needed to reset selected question number
       // https://stackoverflow.com/questions/39556753/how-to-reset-child-elements-setState
       return <Question addPts={this.addPointsToHouse} key={questionNumber}
-        question={QuestionData[questionNumber]} />
+        question={QuestionData[questionNumber]} handleNext={this.handleNext} />
     } else {
       return <RevealHouse houseScores={houseScores} />
     }
@@ -72,9 +84,9 @@ class App extends Component {
   render() {
     let nextButton;
     if (this.state.nextDisabled)
-      nextButton = <Button disabled>Next</Button>
+      nextButton = <div></div> //<Button disabled>Next</Button>
     else
-      nextButton = <Button onClick={this.handleNext}>Next</Button>
+      nextButton = <Button onClick={this.handleNext1}>Next</Button>
     return (
       <div className="App">
         <header className="App-header">

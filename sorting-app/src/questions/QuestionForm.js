@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Header } from 'semantic-ui-react';
+import { Form, Header, Button } from 'semantic-ui-react';
 
 class QuestionForm extends Component {
   constructor(props) {
@@ -23,6 +23,7 @@ class QuestionForm extends Component {
     let question, sly, rav, huf, gry, order;
     ( { question, sly, rav, huf, gry, order }  = this.props.question );
     let questions = [['0', gry],['1', rav],['2', sly],['3', huf]]
+    let nextButton = <Button onClick={this.props.handleNext}>Next</Button>
     return (
       <div>
         <Header>
@@ -71,6 +72,7 @@ class QuestionForm extends Component {
             />
           </Form.Group>
         </Form>
+        {nextButton}
       </div>
     )
   }
