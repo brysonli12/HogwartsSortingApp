@@ -52,14 +52,8 @@ class App extends Component {
     if (this.state.currentQuestion === 0) {
       return <Introduction />
     } else if (this.state.currentQuestion < this.state.totalNumberOfQuestions + 1) {
-<<<<<<< HEAD
-        question={QuestionData[questionNumber]} />
-=======
-      return <Question addPts={this.addPointsToHouse}
-=======
       return <Question addPts={this.addPointsToHouse}
         question={QuestionData[questionNumber]} handleNext={this.handleNext} />
->>>>>>> 17f15008bc3438cafd2e1d97d7a2382b1d53419d
     } else {
       return <RevealHouse houseScores={houseScores} />
     }
