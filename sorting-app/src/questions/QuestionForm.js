@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Header } from 'semantic-ui-react';
+import { Form, Header, Button } from 'semantic-ui-react';
 
 class QuestionForm extends Component {
   constructor(props) {
@@ -10,19 +10,26 @@ class QuestionForm extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleNextQuestion = this.handleNextQuestion.bind(this)
   }
   componentDidUpdate() {
     console.log(this.state);
   }
   handleChange(e, { value }) {
-    this.props.addPts(value, 4)
+
     this.setState({ selectedAnswer: value })
+  }
+  handleNextQuestion() {
+    this.props.addPts(this.state.selectedAnswer, 4);
+    this.setState( {selectedAnswer: 0} );
+    this.props.handleNext();
   }
 
   render() {
     let question, sly, rav, huf, gry, order;
     ( { question, sly, rav, huf, gry, order }  = this.props.question );
     let questions = [['0', gry],['1', rav],['2', sly],['3', huf]]
+    let nextButton = <Button onClick={this.handleNextQuestion}>Next</Button>
     return (
       <div>
         <Header>
@@ -71,6 +78,7 @@ class QuestionForm extends Component {
             />
           </Form.Group>
         </Form>
+        {nextButton}
       </div>
     )
   }

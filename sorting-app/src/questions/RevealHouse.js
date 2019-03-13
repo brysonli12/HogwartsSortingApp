@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-// import { Form, Radio } from 'semantic-ui-react';
+// import { Button } from 'semantic-ui-react';
 
 class RevealHouse extends Component {
   constructor(props) {
