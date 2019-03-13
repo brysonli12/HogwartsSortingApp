@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-// import { Form, Radio } from 'semantic-ui-react';
+// import { Button } from 'semantic-ui-react';
 
 class RevealHouse extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class RevealHouse extends Component {
 
   render() {
     const { houseScores } = this.props;
-    const sortedHouse = _.max(Object.keys(houseScores), house => houseScores[house]);
+    const sortedHouse = _.maxBy(Object.keys(houseScores), house => houseScores[house]);
     return (
       <div>Final Scores reveal that you are in the house...:
         {sortedHouse}

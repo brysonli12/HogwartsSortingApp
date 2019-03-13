@@ -23,13 +23,25 @@ class App extends Component {
       totalNumberOfQuestions: Object.keys(QuestionData).length,
     }
     this.handleNext = this.handleNext.bind(this)
+    this.handleNextStart = this.handleNextStart.bind(this)
     this.addPointsToHouse = this.addPointsToHouse.bind(this)
   }
   componentDidUpdate() {
-    // console.log(this.state);
+    console.log(this.state.houseScores);
   }
+
+  handleNextStart(e) {
+    // hide the introduction Next button and reset scores
+    this.setState({ houseScores: {
+      gryffindor: 0,
+      ravenclaw: 0,
+      slytherin: 0,
+      hufflepull: 0,
+    }, nextDisabled: true, currentQuestion: (this.state.currentQuestion + 1) % (this.state.totalNumberOfQuestions + 2) })
+  }
+
   handleNext(e) {
-    //console.log(this.state.currentQuestion);
+    // to be used only by QuestionForm to go to next question
     this.setState({ currentQuestion: (this.state.currentQuestion + 1) % (this.state.totalNumberOfQuestions + 2) })
   }
 
@@ -40,8 +52,9 @@ class App extends Component {
     if (this.state.currentQuestion === 0) {
       return <Introduction />
     } else if (this.state.currentQuestion < this.state.totalNumberOfQuestions + 1) {
-      return <Question addPts={this.addPointsToHouse}
         question={QuestionData[questionNumber]} />
+=======
+      return <Question addPts={this.addPointsToHouse}
     } else {
       return <RevealHouse houseScores={houseScores} />
     }
