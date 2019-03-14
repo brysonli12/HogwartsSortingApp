@@ -6,7 +6,7 @@ class QuestionForm extends Component {
     super(props);
 
     this.state = {
-      selectedAnswer: 0,
+      selectedAnswer: null,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -21,15 +21,14 @@ class QuestionForm extends Component {
   }
   handleNextQuestion() {
     this.props.addPts(this.state.selectedAnswer, 4);
-    this.setState( {selectedAnswer: 0} );
+    this.setState( {selectedAnswer: null} );
     this.props.handleNext();
   }
 
   render() {
     let question, sly, rav, huf, gry, order;
     ( { question, sly, rav, huf, gry, order }  = this.props.question );
-    let questions = [['0', gry],['1', rav],['2', sly],['3', huf]]
-    let nextButton = <Button onClick={this.handleNextQuestion}>Next</Button>
+    const questions = [['0', gry],['1', rav],['2', sly],['3', huf]]
     return (
       <div>
         <Header>
@@ -78,7 +77,9 @@ class QuestionForm extends Component {
             />
           </Form.Group>
         </Form>
-        {nextButton}
+        <Button onClick={this.handleNextQuestion}>
+          Next
+        </Button>
       </div>
     )
   }
