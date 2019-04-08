@@ -7,7 +7,16 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.button {
+  margin: 25px !important;
+}
+img {
+  margin: 25px !important;
+  /*height:10%  !important;*/
+  flex: 0.05;
+    aspectRatio: 1.21;
+    resizeMode: 'contain';
+}
 .App-header {
   background-color: #edeff1;
   min-height: 100vh;

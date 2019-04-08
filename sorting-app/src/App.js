@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import hat from './hat.svg'
+// import logo from './logo.svg';
+import broom from './broom.png'
 import './App.css';
 import Introduction from './questions/Introduction'
 import Question from './questions/QuestionForm'
@@ -17,7 +17,7 @@ class App extends Component {
         gryffindor: 0,
         ravenclaw: 0,
         slytherin: 0,
-        hufflepull: 0,
+        hufflepuff: 0,
       },
       currentQuestion: 0,
       nextDisabled: false,
@@ -37,7 +37,7 @@ class App extends Component {
       gryffindor: 0,
       ravenclaw: 0,
       slytherin: 0,
-      hufflepull: 0,
+      hufflepuff: 0,
     }, nextDisabled: true, currentQuestion: (this.state.currentQuestion + 1) % (this.state.totalNumberOfQuestions + 2) })
   }
 
@@ -61,22 +61,22 @@ class App extends Component {
   }
 
   addPointsToHouse(houseNum, pointsToAdd) {
-    const { houseScores: { gryffindor: gry, ravenclaw: rav, slytherin: sly, hufflepull: huf } } = this.state;
+    const { houseScores: { gryffindor: gry, ravenclaw: rav, slytherin: sly, hufflepuff: huf } } = this.state;
     switch (houseNum) {
       case '0':
         this.setState({ houseScores: { gryffindor: gry + pointsToAdd,
-        ravenclaw: rav, slytherin: sly, hufflepull: huf } })
+        ravenclaw: rav, slytherin: sly, hufflepuff: huf } })
         break;
       case '1':
         this.setState({ houseScores: { ravenclaw: rav + pointsToAdd,
-         gryffindor: gry, slytherin: sly, hufflepull: huf } })
+         gryffindor: gry, slytherin: sly, hufflepuff: huf } })
         break;
       case '2':
         this.setState({ houseScores: { slytherin: sly + pointsToAdd,
-        gryffindor: gry, ravenclaw: rav, hufflepull: huf } })
+        gryffindor: gry, ravenclaw: rav, hufflepuff: huf } })
         break;
       default:
-        this.setState({ houseScores: { hufflepull: huf + pointsToAdd,
+        this.setState({ houseScores: { hufflepuff: huf + pointsToAdd,
         gryffindor: gry, ravenclaw: rav, slytherin: sly } })
     }
   }
@@ -86,11 +86,11 @@ class App extends Component {
     if (this.state.nextDisabled)
       nextButton = <div></div> //<Button disabled>Next</Button>
     else
-      nextButton = <Button onClick={this.handleRestart}>Next</Button>
+      nextButton = <div><Button onClick={this.handleRestart}>Next</Button></div>
     return (
       <div className="App">
         <header className="App-header">
-          <img src={hat} className="App-logo" alt="logo" />
+          <img src={broom} className="App-logo" alt="logo" />
           {this.renderQuestion()}
           {nextButton}
         </header>
