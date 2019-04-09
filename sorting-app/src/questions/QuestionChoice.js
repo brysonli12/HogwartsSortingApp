@@ -9,7 +9,8 @@ class QuestionChoice extends Component {
   }
 
   componentDidUpdate() {
-    // console.log(this.state);
+    // console.log(this.props.value);
+    // console.log(this.props.selected);
   }
 
   handleClick(){
@@ -19,9 +20,7 @@ class QuestionChoice extends Component {
 
   render() {
     return (
-      <div className="qchoice" onClick={this.handleClick.bind(this)}>
-          <div className={this.props.selected ? "qchoice selected" : "qchoice"} data-value={this.props.value}>{this.props.label}</div>
-      </div>
+          <div className={this.props.selected ? "qchoice qselected" : "qchoice"} onClick={this.handleClick.bind(this)} data-value={this.props.value}>{this.props.label}</div>
     )
   }
 }

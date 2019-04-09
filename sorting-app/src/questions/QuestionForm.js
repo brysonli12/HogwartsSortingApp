@@ -23,7 +23,10 @@ class QuestionForm extends Component {
   }
   handleChange(value) { //e, { value }) {
     //console.log(e);
-    this.setState({ selectedAnswer: value })
+    if (this.state.selectedAnswer === value)
+      this.setState({ selectedAnswer: null })
+    else
+      this.setState({ selectedAnswer: value })
   }
   handleNextQuestion() {
     this.props.addPts(this.state.selectedAnswer, 4);
@@ -62,7 +65,7 @@ class QuestionForm extends Component {
               label={questions[order[2]][1]}
               name='radioGroup'
               value={questions[order[2]][0]}
-              checked={this.state.selectedAnswer === questions[order[2]][0]}
+              selected={this.state.selectedAnswer === questions[order[2]][0]}
               handleClick={this.handleChange}
           />
           <QuestionChoice
