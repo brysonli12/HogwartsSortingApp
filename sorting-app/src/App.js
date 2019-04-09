@@ -6,6 +6,7 @@ import Introduction from './questions/Introduction'
 import Question from './questions/QuestionForm'
 import RevealHouse from './questions/RevealHouse'
 import QuestionData from './questions/QuestionData'
+import QuestionChoice from './questions/QuestionChoice'
 import { Button } from 'semantic-ui-react'; // Icon
 
 class App extends Component {
@@ -93,6 +94,7 @@ class App extends Component {
           <img src={broom} className="App-logo" alt="logo" />
           {this.renderQuestion()}
           {nextButton}
+          <QuestionChoice choice={ {choice_text: "A choice test", selected: false }}/>
         </header>
       </div>
     );
