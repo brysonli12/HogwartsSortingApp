@@ -31,7 +31,7 @@ class QuestionForm extends Component {
     const questions = [['0', gry],['1', rav],['2', sly],['3', huf]]
     return (
       <div>
-        <Header>
+        <Header style={{position: 'fixed', top: '25%',left: '100px', width: '30%', fontSize: '50'}}>
           Question: {question}
         </Header>
 

@@ -90,6 +90,7 @@ class App extends Component {
       nextButton = <div><Button onClick={this.handleRestart}>Next</Button></div>
     return (
       <div className="App">
+
         <header className="App-header">
           <img src={broom} className="App-logo" alt="logo" />
           {this.renderQuestion()}
