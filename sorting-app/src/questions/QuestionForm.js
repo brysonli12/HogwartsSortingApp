@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Form, Header, Button } from 'semantic-ui-react';
+// import QuestionChoice from './questions/QuestionChoice'
+/*
+
+<QuestionChoice choice={ {choice_text: "A choice test", selected: false }}/>
+*/
 
 class QuestionForm extends Component {
   constructor(props) {
@@ -31,11 +36,11 @@ class QuestionForm extends Component {
     const questions = [['0', gry],['1', rav],['2', sly],['3', huf]]
     return (
       <div>
-        <Header style={{position: 'fixed', top: '25%',left: '100px', width: '30%', fontSize: '50'}}>
+        <Header style={{position: 'fixed', top: '25%',left: '5%', width: '30%', fontSize: '50'}}>
           Question: {question}
         </Header>
 
-        <Form>
+        <Form  style={{position: 'fixed', top: '25%',right: '5%', width: '30%', fontSize: '50'}}>
           <Form.Group>
             <Form.Radio
               toggle

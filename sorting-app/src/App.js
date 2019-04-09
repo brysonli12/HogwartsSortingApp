@@ -6,7 +6,6 @@ import Introduction from './questions/Introduction'
 import Question from './questions/QuestionForm'
 import RevealHouse from './questions/RevealHouse'
 import QuestionData from './questions/QuestionData'
-import QuestionChoice from './questions/QuestionChoice'
 import { Button } from 'semantic-ui-react'; // Icon
 
 class App extends Component {
@@ -82,6 +81,7 @@ class App extends Component {
     }
   }
 
+
   render() {
     let nextButton;
     if (this.state.nextDisabled)
@@ -90,12 +90,10 @@ class App extends Component {
       nextButton = <div><Button onClick={this.handleRestart}>Next</Button></div>
     return (
       <div className="App">
-
         <header className="App-header">
           <img src={broom} className="App-logo" alt="logo" />
           {this.renderQuestion()}
           {nextButton}
-          <QuestionChoice choice={ {choice_text: "A choice test", selected: false }}/>
         </header>
       </div>
     );

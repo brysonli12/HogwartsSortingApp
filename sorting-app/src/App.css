@@ -18,14 +18,14 @@ img {
     resizeMode: 'contain';
 }
 .App-header {
-  background-color: #edeff1;
+  background-color: #4abdac; /*#edeff1;*/
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(24, 2, 2);
+  color: #dfdce3;/*rgb(24, 2, 2);*/
 }
 
 .App-link {
