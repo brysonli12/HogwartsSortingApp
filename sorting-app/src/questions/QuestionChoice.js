@@ -20,7 +20,8 @@ class QuestionChoice extends Component {
 
   render() {
     return (
-          <div className={this.props.selected ? "qchoice qselected" : "qchoice"} onClick={this.handleClick.bind(this)} data-value={this.props.value}>{this.props.label}</div>
+          <div className={this.props.selected ? "qchoice qselected" : "qchoice"} onClick={this.handleClick.bind(this)} data-value={this.props.value}>
+          {this.props.label}</div>
     )
   }
 }

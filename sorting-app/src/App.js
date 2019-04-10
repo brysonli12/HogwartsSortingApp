@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import broom from './broom.png'
+import broom2 from './broom2.png'
 import './App.css';
 import Introduction from './questions/Introduction'
 import Question from './questions/QuestionForm'
@@ -91,7 +91,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={broom} className="App-logo" alt="logo" />
+          <img src={broom2} className="App-logo" alt="logo" />
           {this.renderQuestion()}
           {nextButton}
         </header>

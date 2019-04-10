@@ -46,7 +46,7 @@ class QuestionForm extends Component {
         <Header style={{position: 'fixed', top: '25%',left: '5%', width: '30%', fontSize: '50'}}>
           Question: {question}
         </Header>
-        <div style={{position: 'fixed', top: '0px',right: '0px', width: '30%', fontSize: '50'}}>
+        <div style={{position: 'fixed', top: '0px',right: '0px', width: '30%', height:'100%', fontSize: '50'}}>
           <QuestionChoice
             label={questions[order[0]][1]}
             name='radioGroup'
