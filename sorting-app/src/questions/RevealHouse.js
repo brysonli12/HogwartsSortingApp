@@ -16,7 +16,7 @@ class RevealHouse extends Component {
     const { houseScores } = this.props;
     const sortedHouse = _.maxBy(Object.keys(houseScores), house => houseScores[house]);
     return (
-      <div>Final Scores reveal that you are in the house...:
+      <div>Final Scores reveal that you are in the house:
         {sortedHouse}
       </div>
     )
